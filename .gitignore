@@ -1,0 +1,37 @@
+
+# Frontend dependencies and build files
+frontend/node_modules/
+frontend/dist/
+
+# Backend build files
+arte-gallery/target/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local uploaded artwork files
+arte-gallery/uploads/
+
+
+/uploads/
+
+
+# Local Spring Boot configuration
+arte-gallery/src/main/resources/application.properties
+
+# Local environment files
+arte-gallery/src/main/resources/application-local.properties

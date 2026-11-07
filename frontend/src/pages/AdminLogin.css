@@ -1,0 +1,138 @@
+
+.admin-login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background:
+            radial-gradient(circle at top, #292218, #0b0b0b 65%);
+    font-family: Arial, sans-serif;
+}
+
+.admin-login-card {
+    width: 100%;
+    max-width: 430px;
+    padding: 45px 38px;
+    background: #151515;
+    border: 1px solid #393124;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+.login-logo {
+    text-align: center;
+    color: #c9a96e;
+    margin-bottom: 35px;
+}
+
+.login-logo h1 {
+    font-size: 34px;
+    letter-spacing: 8px;
+    margin: 10px 0 5px;
+}
+
+.login-logo p {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #aaa;
+}
+
+.login-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-heading h2 {
+    color: #f3e8d0;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.login-heading p {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.login-input-group {
+    margin-bottom: 22px;
+}
+
+.login-input-group label {
+    display: block;
+    color: #d5c5a4;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.login-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 14px;
+    border: 1px solid #454039;
+    background: #101010;
+    color: #c9a96e;
+}
+
+.login-input-wrapper:focus-within {
+    border-color: #c9a96e;
+}
+
+.login-input-wrapper input {
+    width: 100%;
+    padding: 14px 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+}
+
+.login-input-wrapper input::placeholder {
+    color: #777;
+}
+
+.admin-login-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    background: #c9a96e;
+    border: none;
+    color: #111;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.admin-login-btn:hover {
+    background: #e0c18a;
+}
+
+.back-to-gallery {
+    display: block;
+    margin: 24px auto 0;
+    background: transparent;
+    border: none;
+    color: #c9a96e;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.login-footer {
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: #777;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 480px) {
+    .admin-login-card {
+        padding: 35px 22px;
+    }
+}

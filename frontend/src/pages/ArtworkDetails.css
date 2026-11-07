@@ -1,0 +1,361 @@
+.artwork-details-page {
+    min-height: 100vh;
+    background: #101010;
+    color: #f5f0e8;
+    padding: 45px 8%;
+}
+
+.back-to-gallery {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #c6a15b;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 45px;
+    transition: 0.3s;
+}
+
+.back-to-gallery:hover {
+    color: #f5f0e8;
+}
+
+.artwork-details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.details-image {
+    background: #191919;
+    padding: 20px;
+    border: 1px solid #30291e;
+}
+
+.details-image img {
+    width: 100%;
+    max-height: 650px;
+    object-fit: contain;
+    display: block;
+}
+
+.details-content {
+    padding: 20px 0;
+}
+
+.details-category {
+    color: #c6a15b;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.details-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(35px, 4vw, 55px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 20px 0 12px;
+}
+
+.details-artist {
+    color: #aaa49b;
+    font-size: 16px;
+}
+
+.details-divider {
+    width: 70px;
+    height: 1px;
+    background: #c6a15b;
+    margin: 30px 0;
+}
+
+.details-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.details-description {
+    color: #aaa49b;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.details-information {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin: 35px 0;
+    padding: 25px 0;
+    border-top: 1px solid #30291e;
+    border-bottom: 1px solid #30291e;
+}
+
+.details-information span {
+    color: #c6a15b;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.details-information p {
+    color: #f5f0e8;
+    margin-top: 9px;
+    font-size: 14px;
+}
+
+.contact-owner-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #c6a15b;
+    color: #101010;
+    border: none;
+    padding: 16px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-owner-button:hover {
+    background: #e0bd7a;
+    transform: translateY(-2px);
+}
+
+.details-message {
+    text-align: center;
+    color: #c6a15b;
+    margin-top: 100px;
+    font-size: 16px;
+}
+/* TABLET RESPONSIVENESS */
+@media (max-width: 800px) {
+    .artwork-details-page {
+        padding: 30px 5%;
+    }
+
+    .artwork-details-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .details-image {
+        padding: 12px;
+    }
+
+    .details-image img {
+        width: 100%;
+        max-height: 480px;
+        object-fit: contain;
+    }
+
+    .details-content {
+        padding: 10px 0;
+    }
+
+    .details-content h1 {
+        font-size: 38px;
+    }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 480px) {
+    .artwork-details-page {
+        padding: 22px 18px 45px;
+    }
+
+    .back-to-gallery {
+        margin-bottom: 25px;
+        font-size: 13px;
+    }
+
+    .artwork-details-container {
+        gap: 25px;
+    }
+
+    .details-image {
+        padding: 8px;
+    }
+
+    .details-image img {
+        max-height: 380px;
+    }
+
+    .details-category {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .details-content h1 {
+        font-size: 32px;
+        margin: 14px 0 10px;
+    }
+
+    .details-artist {
+        font-size: 14px;
+    }
+
+    .details-divider {
+        margin: 22px 0;
+    }
+
+    .details-content h3 {
+        font-size: 21px;
+    }
+
+    .details-description {
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .details-information {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px 12px;
+        margin: 25px 0;
+        padding: 22px 0;
+    }
+
+    .details-information span {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .details-information p {
+        font-size: 13px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-owner-button {
+        width: 100%;
+        min-height: 50px;
+        font-size: 14px;
+    }
+}
+
+/* IMAGE PREVIEW */
+
+.details-image {
+    position: relative;
+    cursor: zoom-in;
+}
+
+.image-preview-hint {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #c6a15b;
+    padding: 9px 14px;
+    font-size: 12px;
+    border: 1px solid #66502f;
+    border-radius: 4px;
+}
+
+/* FULL SCREEN OVERLAY */
+
+.image-preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.96);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 60px 20px 30px;
+}
+
+/* PREVIEW IMAGE */
+
+.image-preview-full {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.image-preview-full:hover {
+    transform: scale(1.04);
+}
+
+/* CLOSE BUTTON */
+
+.image-preview-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    color: #c6a15b;
+    font-size: 42px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.image-preview-close:hover {
+    color: #ffffff;
+}
+
+/* IMAGE TITLE */
+
+.image-preview-title {
+    color: #c6a15b;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .image-preview-full {
+        max-width: 100%;
+        max-height: 75vh;
+    }
+
+    .image-preview-close {
+        top: 15px;
+        right: 18px;
+    }
+
+    .image-preview-title {
+        font-size: 17px;
+    }
+}
+
+
+
+
+
+
+/* MOBILE IMAGE PREVIEW IMPROVEMENT */
+
+@media (max-width: 480px) {
+    .image-preview-overlay {
+        padding: 55px 12px 20px;
+    }
+
+    .image-preview-full {
+        max-width: 100%;
+        max-height: 70vh;
+    }
+
+    .image-preview-close {
+        top: 10px;
+        right: 15px;
+        font-size: 36px;
+    }
+
+    .image-preview-title {
+        font-size: 16px;
+        margin-top: 15px;
+    }
+}
