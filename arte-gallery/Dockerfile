@@ -1,10 +1,11 @@
+
 # Stage 1: Build the Spring Boot application
 FROM maven:3-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
-COPY pom.xml .
-COPY src ./src
+COPY arte-gallery/pom.xml .
+COPY arte-gallery/src ./src
 
 RUN mvn clean package -DskipTests
 
