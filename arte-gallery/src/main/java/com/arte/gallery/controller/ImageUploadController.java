@@ -1,6 +1,10 @@
 
 package com.arte.gallery.controller;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +26,23 @@ public class ImageUploadController {
     @Value("${app.upload.dir:uploads}")
     private String uploadDirectory;
 
+    @Value("${cloudinary.enabled:false}")
+    private boolean cloudinaryEnabled;
+
+    private final ObjectProvider<Cloudinary> cloudinaryProvider;
+
+    public ImageUploadController(
+            ObjectProvider<Cloudinary> cloudinaryProvider) {
+        this.cloudinaryProvider = cloudinaryProvider;
+    }
+
     @PostMapping(
             value = "/upload-image",
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE
     )
     public ResponseEntity<Map<String, String>> uploadImage(
             @RequestParam("image") MultipartFile file
-    ) throws IOException {
+    ) throws Exception {
 
         if (file.isEmpty()) {
             return ResponseEntity.badRequest()
@@ -52,6 +66,24 @@ public class ImageUploadController {
                     .body(Map.of("error", "Unsupported image format."));
         }
 
+        // Production: Upload image to Cloudinary
+        if (cloudinaryEnabled) {
+
+            Cloudinary cloudinary = cloudinaryProvider.getObject();
+
+            Map<?, ?> uploadResult = cloudinary.uploader().upload(
+                    file.getBytes(),
+                    ObjectUtils.asMap("folder", "arte-gallery")
+            );
+
+            String imageUrl = uploadResult.get("secure_url").toString();
+
+            return ResponseEntity.ok(
+                    Map.of("imageUrl", imageUrl)
+            );
+        }
+
+        // Local development: Save image to uploads folder
         Path uploadPath = Paths.get(uploadDirectory)
                 .toAbsolutePath()
                 .normalize();
@@ -69,7 +101,8 @@ public class ImageUploadController {
 
         Files.copy(file.getInputStream(), filePath);
 
-        String imageUrl = "http://localhost:8080/uploads/" + newFilename;
+        String imageUrl =
+                "http://localhost:8080/uploads/" + newFilename;
 
         return ResponseEntity.ok(
                 Map.of("imageUrl", imageUrl)
