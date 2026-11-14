@@ -16,6 +16,10 @@ import "./Admin.css";
 function Admin() {
 
     // Artwork collection states
+
+    const API_BASE_URL =
+        import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+
     const [artworks, setArtworks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -175,7 +179,7 @@ function Admin() {
                 imageData.append("image", formData.imageFile);
 
                 const uploadResponse = await fetch(
-                    "http://localhost:8080/api/artworks/upload-image",
+                    `${API_BASE_URL}/api/artworks/upload-image`,
                     {
                         method: "POST",
                         credentials: "include",
@@ -250,7 +254,7 @@ function Admin() {
         try {
 
             const response = await fetch(
-                "http://localhost:8080/api/auth/logout",
+                `${API_BASE_URL}/api/auth/logout`,
                 {
                     method: "POST",
                     credentials: "include"

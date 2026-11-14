@@ -12,7 +12,7 @@ function ProtectedRoute({ children }) {
 
             try {
                 const response = await fetch(
-                    "http://localhost:8080/api/auth/me",
+                    `${import.meta.env.VITE_API_BASE_URL || "http://localhost:8080"}/api/auth/me`,
                     {
                         method: "GET",
                         credentials: "include"

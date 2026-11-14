@@ -6,6 +6,9 @@ import "./AdminLogin.css";
 
 function AdminLogin() {
 
+    const API_BASE_URL =
+        import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
@@ -22,7 +25,7 @@ function AdminLogin() {
 
         try {
             const response = await fetch(
-                "http://localhost:8080/api/auth/login",
+                `${API_BASE_URL}/api/auth/login`,
                 {
                     method: "POST",
                     headers: {

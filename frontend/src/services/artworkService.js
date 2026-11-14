@@ -1,5 +1,7 @@
 
-const API_URL = "http://localhost:8080/api/artworks";
+const API_URL = `${
+    import.meta.env.VITE_API_BASE_URL || "http://localhost:8080"
+}/api/artworks`;
 
 // GET: Fetch all artworks
 export const getAllArtworks = async () => {
@@ -29,6 +31,7 @@ export const addArtwork = async (artwork) => {
 
     return await response.json();
 };
+
 // PUT: Update an existing artwork
 export const updateArtwork = async (id, artwork) => {
     const response = await fetch(`${API_URL}/${id}`, {
