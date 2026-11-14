@@ -1,3 +1,4 @@
+
 package com.arte.gallery.config;
 
 import org.springframework.context.annotation.Bean;
@@ -18,7 +19,6 @@ import java.util.List;
 @Configuration
 public class SecurityConfig {
 
-    // Password encryption
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -30,17 +30,16 @@ public class SecurityConfig {
 
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(
-                List.of("http://localhost:5173")
-        );
+        configuration.setAllowedOrigins(List.of(
+                "http://localhost:5173",
+                "https://arte-gallery-omega.vercel.app"
+        ));
 
-        configuration.setAllowedMethods(
-                List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")
-        );
+        configuration.setAllowedMethods(List.of(
+                "GET", "POST", "PUT", "DELETE", "OPTIONS"
+        ));
 
-        configuration.setAllowedHeaders(
-                List.of("*")
-        );
+        configuration.setAllowedHeaders(List.of("*"));
 
         configuration.setAllowCredentials(true);
 
@@ -60,22 +59,18 @@ public class SecurityConfig {
         http
                 .cors(Customizer.withDefaults())
 
-                // CSRF is disabled for this local REST API setup.
                 .csrf(csrf -> csrf.disable())
 
                 .authorizeHttpRequests(auth -> auth
 
-                        // Allow CORS preflight requests
                         .requestMatchers(
                                 HttpMethod.OPTIONS, "/**"
                         ).permitAll()
 
-                        // Allow admin login
                         .requestMatchers(
                                 HttpMethod.POST, "/api/auth/login"
                         ).permitAll()
 
-                        // Allow visitors to view artworks
                         .requestMatchers(
                                 HttpMethod.GET,
                                 "/api/artworks",
@@ -83,7 +78,6 @@ public class SecurityConfig {
                                 "/uploads/**"
                         ).permitAll()
 
-                        // All other requests require authentication
                         .anyRequest().authenticated()
                 )
 
@@ -93,7 +87,6 @@ public class SecurityConfig {
                         )
                 )
 
-                // Disable default browser login mechanisms
                 .formLogin(form -> form.disable())
                 .httpBasic(basic -> basic.disable());
 
